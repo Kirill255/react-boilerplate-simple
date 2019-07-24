@@ -1,22 +1,26 @@
+import { hot } from "react-hot-loader/root"; // Make sure react-hot-loader is required before react and react-dom
 import React, { Component } from "react";
 
-export default class App extends Component {
+class App extends Component {
   state = {
     count: 0
   };
 
+  increment = () => this.setState((prevState) => ({ count: prevState.count + 1 }));
+  decrement = () => this.setState((prevState) => ({ count: prevState.count - 1 }));
+
   render() {
+    const { count } = this.state;
+
     return (
       <div>
         <h1>Hello world!!!</h1>
-        <h2>Count: {this.state.count}</h2>
-        <button onClick={() => this.setState((prevState) => ({ count: prevState.count - 1 }))}>
-          -
-        </button>
-        <button onClick={() => this.setState((prevState) => ({ count: prevState.count + 1 }))}>
-          +
-        </button>
+        <h2 className={count > 10 ? "warning" : null}>Count: {count}</h2>
+        <button onClick={this.decrement}>-</button>
+        <button onClick={this.increment}>+</button>
       </div>
     );
   }
 }
+
+export default hot(App);
