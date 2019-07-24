@@ -7,6 +7,11 @@ import ErrorBoundary from "./ErrorBoundary";
 
 import "./index.css";
 
+if (process.env.NODE_ENV !== "production") {
+  const axe = require("react-axe");
+  axe(React, ReactDOM, 1000);
+}
+
 ReactDOM.render(
   <React.StrictMode>
     <ErrorBoundary>
