@@ -10,5 +10,9 @@ module.exports = merge(baseConfig, {
       openAnalyzer: false, // default: true -> automatically open report in default browser.
       reportFilename: "bundle_sizes.html" // default report.html
     })
-  ]
+  ],
+  externals: {
+    react: "React",
+    "react-dom": "ReactDOM"
+  }
 });
